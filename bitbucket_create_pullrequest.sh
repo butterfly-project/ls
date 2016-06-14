@@ -8,26 +8,30 @@ if [[ $BRANCH != feature-* ]]; then
     exit 0;
 fi
 
-TITLE="$BRANCH Auto Pull Request"
+echo "push $BRANCH"
 
-echo $TITLE
+git push origin $BRANCH -u
+
+echo "Create Pull Request for $BRANCH"
 
 curl -i -X POST \
         --user "$USER" \
         -H "Accept: application/json" \
         -H "Content-Type: application/json" \
-        -d '{
-             "title": "$TITLE",
-             "source": {
-                 "branch": {
-                     "name": "$BRANCH"
+        -d "{
+             \"title\": \"$BRANCH Auto Pull Request\",
+             \"source\": {
+                 \"branch\": {
+                     \"name\": \"$BRANCH\"
                  }
              },
-             "destination": {
-                 "branch": {
-                     "name": "dev"
+             \"destination\": {
+                 \"branch\": {
+                     \"name\": \"dev\"
                  }
               },
-             "close_source_branch": true
-         }' \
+             \"close_source_branch\": true
+         }" \
         https://api.bitbucket.org/2.0/repositories/$REPOSITORY/pullrequests/
+
+notify-send Git "Pull Request для ветки $BRANCH создан"
