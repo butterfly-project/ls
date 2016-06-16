@@ -8,11 +8,9 @@ if [[ $BRANCH != feature-* ]]; then
     exit 0;
 fi
 
-echo "push $BRANCH"
+notify-send Git "Создание Pull Request для $BRANCH\n"
 
 git push origin $BRANCH -u
-
-echo "Create Pull Request for $BRANCH"
 
 curl -i -X POST \
         --user "$USER" \
@@ -34,4 +32,4 @@ curl -i -X POST \
          }" \
         https://api.bitbucket.org/2.0/repositories/$REPOSITORY/pullrequests/
 
-notify-send Git "Pull Request для ветки $BRANCH создан"
+notify-send Git "Pull Request для ветки $BRANCH создан\n"
