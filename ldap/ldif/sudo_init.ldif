@@ -1,15 +1,15 @@
-dn: ou=services,dc=example,dc=com
+dn: ou=services,dc=nodomain
 ou: services
 objectClass: top
 objectClass: organizationalUnit
 description: Group all services under this OU
 
-dn: ou=sudo,ou=services,dc=example,dc=com
+dn: ou=sudo,ou=services,dc=nodomain
 objectClass: organizationalUnit
 description: sudo
 objectClass: top
 
-dn: cn=defaults,ou=sudo,ou=services,dc=example,dc=com
+dn: cn=defaults,ou=sudo,ou=services,dc=nodomain
 objectClass: top
 objectClass: sudoRole
 cn: defaults
@@ -19,7 +19,7 @@ sudoOption: mail_badpass
 sudoOption: secure_path=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 sudoOrder: 1
 
-dn: cn=root,ou=sudo,ou=services,dc=example,dc=com
+dn: cn=root,ou=sudo,ou=services,dc=nodomain
 objectClass: top
 objectClass: sudoRole
 cn: root
