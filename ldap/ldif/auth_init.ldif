@@ -1,0 +1,48 @@
+# units
+
+dn: ou=users,dc=nodomain
+ou: users
+objectClass: top
+objectClass: organizationalUnit
+description: Central location for UNIX users
+
+dn: ou=groups,dc=nodomain
+ou: groups
+objectClass: top
+objectClass: organizationalUnit
+description: Central location for UNIX groups
+
+# groups
+
+dn: cn=nssproxy,ou=groups,dc=nodomain
+cn: nssproxy
+objectClass: top
+objectClass: posixGroup
+gidNumber: 801
+description: Network Service Switch Proxy Group
+
+dn: cn=ldap_users,ou=groups,dc=nodomain
+cn: ldap_users
+objectClass: top
+objectClass: posixGroup
+gidNumber: 1100
+description: Default LDAP Users Group
+
+# users
+
+dn: cn=nssproxy,ou=users,dc=nodomain
+uid: nssproxy
+gecos: Network Service Switch Proxy User
+objectClass: top
+objectClass: account
+objectClass: posixAccount
+objectClass: shadowAccount
+userPassword: {SSHA}RsAMqOI3647qg1gAZF3x2BKBnp0sEVfa
+shadowLastChange: 15140
+shadowMin: 0
+shadowMax: 99999
+shadowWarning: 7
+loginShell: /bin/false
+uidNumber: 801
+gidNumber: 801
+homeDirectory: /home/nssproxy
