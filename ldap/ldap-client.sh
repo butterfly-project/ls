@@ -24,7 +24,7 @@ base passwd ou=users,dc=nodomain
 base shadow ou=users,dc=nodomain
 nss_initgroups_ignoreusers bin,daemon,games,lp,mail,nobody,nslcd,root,sshd,sync,uucp
 nss_initgroups_ignoreusers sys,man,news,proxy,www-data,backup,list,irc,gnats
-pam_authz_search (&(objectClass=posixAccount)(uid=$username)(|(host=$hostname)(host=$fqdn)(host=\\*)))
+pam_authz_search (&(objectClass=posixAccount)(uid=\$username)(|(host=\$hostname)(host=\$fqdn)(host=\\\\*)))
 EOL
 
 cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
