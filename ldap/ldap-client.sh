@@ -57,3 +57,17 @@ EOL
 
 service ssh restart
 
+DEBIAN_FRONTEND=noninteractive apt-get install -y sudo-ldap
+
+cat > /etc/sudo-ldap.conf <<EOL
+BASE    ${LDAP_BASE}
+URI     ldap://${LDAP_HOST}
+binddn  ${LDAP_BINDDN}
+bindpw  ${LDAP_BINDPW}
+
+SUDOERS_BASE    ou=sudo,ou=services,dc=nodomain
+#SUDOERS_DEBUG 2
+EOL
+
+chown root:root /etc/sudo-ldap.conf
+chmod 600 /etc/sudo-ldap.conf
