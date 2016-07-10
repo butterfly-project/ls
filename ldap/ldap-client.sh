@@ -52,7 +52,7 @@ sed 's/\#PasswordAuthentication yes/PasswordAuthentication no/g;s/\#AuthorizedKe
 
 cat >> /etc/ssh/sshd_config <<EOL
 AuthorizedKeysCommand /usr/bin/ssh-ldap-pubkey-wrapper
-AuthorizedKeysCommandUser nobody
+AuthorizedKeysCommandUser root
 EOL
 
 service ssh restart
