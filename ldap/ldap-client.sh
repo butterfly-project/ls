@@ -59,6 +59,7 @@ service ssh restart
 
 DEBIAN_FRONTEND=noninteractive apt-get install -y sudo-ldap
 
+rm /etc/sudo-ldap.conf
 cat > /etc/sudo-ldap.conf <<EOL
 BASE    ${LDAP_BASE}
 URI     ldap://${LDAP_HOST}
@@ -69,5 +70,8 @@ SUDOERS_BASE    ou=sudo,ou=services,dc=nodomain
 #SUDOERS_DEBUG 2
 EOL
 
-chown root:root /etc/sudo-ldap.conf
-chmod 600 /etc/sudo-ldap.conf
+chown root:root    /etc/ldap/ldap.conf /etc/ldap.conf /etc/sudo-ldap.conf
+chown nslcd:nslcd  /etc/nslcd.conf
+
+chmod 600 /etc/ldap/ldap.conf /etc/ldap.conf /etc/sudo-ldap.conf /etc/nslcd.conf
+
