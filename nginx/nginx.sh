@@ -16,3 +16,9 @@ sed "s/;security.limit_extensions/security.limit_extensions/g" /etc/php/7.0/fpm/
 
 service nginx restart
 service php7.0-fpm restart
+
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+cp composer.phar /usr/local/lib
+ln -s /usr/local/lib/composer.phar /usr/local/bin/composer
