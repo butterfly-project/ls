@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt-get install -y nginx nginx-extras
+apt-get install -y nginx nginx-extras apache2-utils
 wget -P /usr/local/bin/ https://raw.githubusercontent.com/butterfly-project/ls/master/nginx/ngx && chmod +x /usr/local/bin/ngx
 
 echo -e "deb http://packages.dotdeb.org jessie all\ndeb-src http://packages.dotdeb.org jessie all" > /etc/apt/sources.list.d/dotdeb.list
