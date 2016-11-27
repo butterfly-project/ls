@@ -17,12 +17,15 @@ curl -i -X POST \
         -H "Accept: application/json" \
         -H "Content-Type: application/json" \
         -d "{
-             \"title\": \"$BRANCH Auto Pull Request\",
+             \"title\": \"$REPOSITORY $BRANCH Auto Pull Request\",
              \"source\": {
                  \"branch\": {
                      \"name\": \"$BRANCH\"
                  }
              },
+             \"participants\": [
+                 {\"role\": \"PARTICIPANT\", \"username\": \"agregad\"}
+             ],
              \"destination\": {
                  \"branch\": {
                      \"name\": \"dev\"
