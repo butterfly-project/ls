@@ -9,4 +9,5 @@ fi
 
 BRANCH="feature-$TASK_ID"
 
+git checkout dev
 git checkout -b $BRANCH
