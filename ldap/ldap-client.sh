@@ -5,7 +5,7 @@ LDAP_BASE="dc=nodomain"
 LDAP_BINDDN="cn=nssproxy,ou=users,dc=nodomain"
 LDAP_BINDPW=$2
 
-DEBIAN_FRONTEND=noninteractive apt-get install -y ldap-utils libnss-ldapd libpam-ldapd python-pip python-ldap
+DEBIAN_FRONTEND=noninteractive apt-get install -y ldap-utils libnss-ldapd libpam-ldapd python-dev python-pip python-ldap libsasl2-dev libldap2-dev libssl-dev
 
 cat > /etc/ldap/ldap.conf <<EOL
 BASE   ${LDAP_BASE}
