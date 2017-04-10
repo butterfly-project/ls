@@ -19,5 +19,5 @@ git checkout -b $FEATURE_BRANCH
 
 echo $NEW_VERSION > VERSION
 
-git a VERSION
-git c -m "Release $NEW_VERSION"
+git add VERSION
+git commit -m "Release $NEW_VERSION"

@@ -19,5 +19,5 @@ git checkout -b $FEATURE_BRANCH
 
 echo $NEW_VERSION > VERSION
 
-git a VERSION
-git c -m "Hotfix $NEW_VERSION"
+git add VERSION
+git commit -m "Hotfix $NEW_VERSION"
