@@ -32,5 +32,5 @@ rm -Rf /usr/local/lib/composer.phar /usr/local/bin/composer
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php composer-setup.php
 php -r "unlink('composer-setup.php');"
-cp composer.phar /usr/local/lib
+mv composer.phar /usr/local/lib
 ln -s /usr/local/lib/composer.phar /usr/local/bin/composer
