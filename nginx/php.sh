@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sudo apt-get purge 'php5*' -y
 sudo apt-get purge 'php7.0-*' -y
 
 sudo apt update
@@ -26,6 +27,8 @@ sed -i "s/;security.limit_extensions/security.limit_extensions/g" /etc/php/7.1/f
 service nginx restart
 service php7.1-fpm restart
 
+cd /tmp
+rm -Rf /usr/local/lib/composer.phar /usr/local/bin/composer
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php composer-setup.php
 php -r "unlink('composer-setup.php');"
