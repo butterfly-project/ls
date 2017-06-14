@@ -1,5 +1,7 @@
 #!/bin/bash
 
+notify-send Git "Создаем релиз\n"
+
 git release
 git flush
 
