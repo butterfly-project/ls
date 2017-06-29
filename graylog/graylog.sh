@@ -14,6 +14,7 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
 echo "deb http://repo.mongodb.org/apt/debian wheezy/mongodb-org/3.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
 sudo apt-get update
 sudo apt-get install -y mongodb-org
+sudo service mongod start
 
 # install elasticsearch
 wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
@@ -31,8 +32,8 @@ sudo service elasticsearch restart
 curl -XGET 'http://localhost:9200/_cluster/health?pretty=true'
 
 # install graylog
-wget https://packages.graylog2.org/repo/packages/graylog-2.0-repository_latest.deb
-sudo dpkg -i graylog-2.0-repository_latest.deb
+wget https://packages.graylog2.org/repo/packages/graylog-2.2-repository_latest.deb
+sudo dpkg -i graylog-2.2-repository_latest.deb
 sudo apt-get update
 sudo apt-get install -y graylog-server
 sudo rm -f /etc/init/graylog-server.override
