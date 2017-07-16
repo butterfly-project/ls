@@ -1,6 +1,6 @@
 #!/bin/bash
 
-$IP=$1
+IP=$1
 
 sudo apt-get install -y zabbix-agent
 
