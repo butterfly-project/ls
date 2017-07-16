@@ -1,5 +1,20 @@
 #!/bin/bash
 
+sudo echo "deb http://ftp.debian.org/debian jessie-backports main" > /etc/apt/sources.list.d/backports.list
+sudo apt-get -y update && sudo apt-get -y upgrade
+sudo apt-get -y install apt-transport-https openjdk-8-jre-headless uuid-runtime pwgen
+
+
+
+
+
+
+
+
+
+
+
+
 # install java 8
 sudo sh -c "echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' > /etc/apt/sources.list.d/java-8-debian.list"
 sudo sh -c "echo 'deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' >> /etc/apt/sources.list.d/java-8-debian.list"
