@@ -6,7 +6,7 @@ ram=$3       # Mb
 swap=$4      # Mb
 disk=$5      # Gb
 
-
+password=`pwgen -y 20 1`
 vmid=`pct list | cut -d' ' -f1 | grep -v VMID | sort | tail -1`
 
 if [[ -z $vmid ]]
@@ -34,3 +34,11 @@ pct create $vmid $template \
 
 pct set $vmid -onboot 1
 pct start $vmid
+
+pct exec $vmid -- bash -c "echo 'root:$password' | chpasswd"
+
+if [ -f "./ctinit.sh" ]; then
+    pct push $vmid ./ctinit.sh /root/i.sh
+    pct exec $vmid -- chmod +x /root/i.sh
+    pct exec $vmid -- /root/i.sh
+fi
