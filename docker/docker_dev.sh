@@ -10,4 +10,9 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debi
 sudo apt-get update
 sudo apt-get install -y docker-ce
 
+sudo groupadd docker
+sudo usermod -aG docker $USER
+
 sudo docker run hello-world
+
+echo 'Restart console for apply docker permissions'
