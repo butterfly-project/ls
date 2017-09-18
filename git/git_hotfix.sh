@@ -1,5 +1,7 @@
 #!/bin/bash
 
+$(dirname "${BASH_SOURCE[0]}")/git_check_version.sh
+
 git checkout master
 git pull
 git checkout dev

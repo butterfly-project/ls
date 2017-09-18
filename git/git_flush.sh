@@ -1,5 +1,7 @@
 #!/bin/bash
 
+$(dirname "${BASH_SOURCE[0]}")/git_check_version.sh
+
 VERSION=`cat VERSION`
 RELEASE_BRANCH=`git rev-parse --abbrev-ref HEAD`
 
