@@ -16,7 +16,7 @@ dpkg-reconfigure -f noninteractive tzdata
 
 
 echo 'Install minimal programs'
-apt-get install -y ssh sudo vim-nox htop iftop git build-essential software-properties-common
+apt install -y ssh sudo vim-nox htop iftop git build-essential software-properties-common
 
 
 echo 'Create user'
