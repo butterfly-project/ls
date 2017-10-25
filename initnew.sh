@@ -22,17 +22,21 @@ apt install -y ssh sudo vim-nox htop iftop git build-essential software-properti
 echo 'Create user'
 useradd -m -d /home/$USER -s /bin/bash $USER
 adduser $USER sudo
-echo 'agregad ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/agregad
+echo '$USER ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/$USER
 
 cd /tmp
 wget https://raw.githubusercontent.com/butterfly-project/ls/master/config/.bashrc
 mv .bashrc /home/$USER/
+chown $USER:$USER /home/$USER/.bashrc
 
 mkdir /home/$USER/.ssh/
 wget https://raw.githubusercontent.com/butterfly-project/ls/master/config/id_rsa.pub
-mv id_rsa.pub /home/$USER/.ssh/
-chown $USER:$USER /home/$USER/.ssh/id_rsa.pub
-chmod 600 /home/$USER/.ssh/id_rsa.pub
+cat id_rsa.pub >> /home/$USER/.ssh/authorized_keys
+rm id_rsa.pub
+chown $USER:$USER /home/$USER/.ssh/authorized_keys
+chown $USER:$USER /home/$USER/.ssh/
+chmod 700 /home/$USER/.ssh/
+chmod 600 /home/$USER/.ssh/authorized_keys
 
 
 echo 'Configure ssh'
