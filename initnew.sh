@@ -22,7 +22,7 @@ apt install -y ssh sudo vim-nox htop iftop git build-essential software-properti
 echo 'Create user'
 useradd -m -d /home/$USER -s /bin/bash $USER
 adduser $USER sudo
-echo '$USER ALL=(ALL) NOPASSWD: ALL' > /etc/sudoers.d/$USER
+echo "$USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER
 
 cd /tmp
 wget https://raw.githubusercontent.com/butterfly-project/ls/master/config/.bashrc
@@ -41,7 +41,7 @@ chmod 600 /home/$USER/.ssh/authorized_keys
 
 echo 'Configure ssh'
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
-sed "s/PermitRootLogin yes/PermitRootLogin no/g;s/LoginGraceTime 120/LoginGraceTime 45/g;" /etc/ssh/sshd_config.bak > /etc/ssh/sshd_config
+sed "s/PermitRootLogin yes/PermitRootLogin no/g;s/LoginGraceTime 120/LoginGraceTime 45/g;s/#PasswordAuthentication yes/PasswordAuthentication no/g;" /etc/ssh/sshd_config.bak > /etc/ssh/sshd_config
 echo 'ClientAliveInterval 300' >> /etc/ssh/sshd_config
 echo "AllowUsers $USER" >> /etc/ssh/sshd_config
 service ssh restart
